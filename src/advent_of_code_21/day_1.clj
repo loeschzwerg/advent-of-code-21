@@ -3,22 +3,21 @@
   (:gen-class))
 
 (def ^:dynamic counter 0)
-(def data (u/slurp-edn "resources/day_1.txt"))
+(def d1-data (u/slurp-edn "resources/day_1.txt"))
 
-
-(defn reducer-fn [last next]
+(defn- reducer-fn [last next]
    (if (< last next)
      (prn next 'increased '-> (swap! counter inc))
      (prn last 'decreased))
   next)
 
-(defn part-one []
+(defn d1-one []
   (with-bindings {#'counter (atom 0)}
-    (reduce reducer-fn data)
+    (reduce reducer-fn d1-data)
     (doto @counter
       (prn 'Larger 'measurements))))
 
-(defn sliding-reducer-fn [last next-val]
+(defn- sliding-reducer-fn [last next-val]
   (let [next' (conj (take 2 last) next-val)
         sum'  (- (u/sum next') (u/sum last))]
     (cond
@@ -28,8 +27,8 @@
       (neg? sum')        (prn (u/sum next') 'decreased))
     next'))
 
-(defn part-two []
+(defn d1-two []
   (with-bindings {#'counter (atom 0)}
-    (reduce sliding-reducer-fn nil data)
+    (reduce sliding-reducer-fn nil d1-data)
     (doto @counter
       (prn 'Larger 'sliding 'measurements))))
