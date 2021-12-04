@@ -3,7 +3,8 @@
             [advent-of-code-21.day-1 :refer :all]
             [advent-of-code-21.day-2 :refer :all]
             [advent-of-code-21.day-3 :refer :all]
-            [advent-of-code-21.day-4 :refer :all]))
+            [advent-of-code-21.day-4 :refer :all]
+            [advent-of-code-21.day-5 :as d5]))
 
 (deftest d1-test
   (testing "First day"
@@ -52,3 +53,14 @@
       (is (= 1924 (d4-two example))))
     (testing "Actual input - day 4 part two"
       (is (= 4590 (d4-two d4-data))))))
+
+(deftest d5-test
+  (let [example []]
+    (testing "Example input - day 5 part one"
+      (is (= nil (d5/one example))))
+    (testing "Actual input - day 5 part one"
+      (is (= nil (d5/one d5/data))))
+    (testing "Example input - day 5 part two"
+      (is (= nil (d5/two example))))
+    (testing "Actual input - day 5 part two"
+      (is (= nil (d5/two d5/data))))))
