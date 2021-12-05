@@ -55,12 +55,32 @@
       (is (= 4590 (d4-two d4-data))))))
 
 (deftest d5-test
-  (let [example []]
+  (let [example [[0,9 '-> 5,9]
+                 [8,0 '-> 0,8]
+                 [9,4 '-> 3,4]
+                 [2,2 '-> 2,1]
+                 [7,0 '-> 7,4]
+                 [6,4 '-> 2,0]
+                 [0,9 '-> 2,9]
+                 [3,4 '-> 1,4]
+                 [0,0 '-> 8,8]
+                 [5,5 '-> 8,2]]]
     (testing "Example input - day 5 part one"
-      (is (= nil (d5/one example))))
+      (is (= 5 (d5/one example))))
     (testing "Actual input - day 5 part one"
-      (is (= nil (d5/one d5/data))))
+      (is (= 6856 (d5/one d5/data))))
     (testing "Example input - day 5 part two"
-      (is (= nil (d5/two example))))
+      (is (= 12 (d5/two example))))
     (testing "Actual input - day 5 part two"
-      (is (= nil (d5/two d5/data))))))
+      (is (= 20666 (d5/two d5/data))))))
+
+#_(deftest dx-test
+  (let [example []]
+    (testing "Example input - day x part one"
+      (is (= nil (dx/one example))))
+    (testing "Actual input - day x part one"
+      (is (= nil (dx/one dx/data))))
+    (testing "Example input - day x part two"
+      (is (= nil (dx/two example))))
+    (testing "Actual input - day x part two"
+      (is (= nil (dx/two dx/data))))))
