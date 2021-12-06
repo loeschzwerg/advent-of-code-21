@@ -65,8 +65,14 @@
         lines   (str/split-lines file)
         parts   (partition-by empty? lines) ;; empty lines mark a break
         cleaned (remove (comp empty? first) parts)] ;; remove empty parts
-    (if (= 1 (count cleaned))
+    (cond
+      (= 1 (count lines))
+      (first (parse-part lines))
+      
+      (= 1 (count cleaned)) 
       (parse-part (first cleaned))
+      
+      :else 
       (mapv parse-part cleaned))))
 
 (comment
